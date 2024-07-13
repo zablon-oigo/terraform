@@ -2,7 +2,7 @@
 
 ![Dynamo](https://github.com/user-attachments/assets/68b50c42-c754-473c-9481-7c324b5c5966)
 ### Create a variables file
-- Name the file as variables.tf and press Enter to save it
+- Create a file & name the file as **variables.tf** and press Enter to save it
 - Paste the below contents in variables.tf file
 
 ```
@@ -19,4 +19,5 @@ variable "region" {
 ```
 - In the above content, you are declaring a variable called, access_key, secret_key, and region with a short description of all 3.
 - After pasting the above contents, save the file by pressing ctrl + S.
+- 
 
