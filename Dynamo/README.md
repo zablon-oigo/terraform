@@ -64,4 +64,40 @@ resource "aws_dynamodb_table" "dynamodb_table" {
 - One write capacity unit describes the one strongly consistent write per second upto 1 KB in size.
 - Hash_key represents the partition key of an item. It is composed of one attribute that acts as a primary key for the table.
 - We have defined RollNo. as the primary attribute which will be an integer. Therefore we have declared the type as “N”.
-  
+
+### Adding items to the DynamoDB Table
+- In this task, we are going to add items to the DynamoDB Table in the main.tf file.
+- To add items to the table, paste the following content in the main.tf.
+```
+resource "aws_dynamodb_table_item" "item1" {
+  table_name = aws_dynamodb_table.dynamodb_table.name
+  hash_key   = aws_dynamodb_table.dynamodb_table.hash_key
+  item = <<ITEM
+{
+  "RollNo.": {"N": "1"},
+  "Name": {"S": "John"}
+}
+ITEM
+}
+resource "aws_dynamodb_table_item" "item2" {
+  table_name = aws_dynamodb_table.dynamodb_table.name
+  hash_key   = aws_dynamodb_table.dynamodb_table.hash_key
+  item = <<ITEM
+{
+  "RollNo.": {"N": "2"},
+  "Name": {"S": "Jane"}
+}
+ITEM
+}
+
+resource "aws_dynamodb_table_item" "item3" {
+  table_name = aws_dynamodb_table.dynamodb_table.name
+  hash_key   = aws_dynamodb_table.dynamodb_table.hash_key
+  item = <<ITEM
+{
+  "RollNo.": {"N": "3"},
+  "Name": {"S": "Bob"}
+}
+ITEM
+}
+```
