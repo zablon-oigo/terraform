@@ -26,4 +26,6 @@ variable "region" {
     access_key = "<YOUR_ACCESS_KEY>"        
     secret_key = "<YOUR_SECRET_KEY>"
 ```
-
+- In the above code, you are defining the dynamic values of variables declared earlier
+- Replace the values of access_key and secret_key
+- After replacing the values of access_key and secret_key, save the file by pressing Ctrl + S.
