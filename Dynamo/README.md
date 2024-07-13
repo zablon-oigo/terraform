@@ -101,3 +101,6 @@ resource "aws_dynamodb_table_item" "item3" {
 ITEM
 }
 ```
+### Create an output file
+- In this task, you will create an output.tf file where you will add details of the provider and resources.
+- Create a new file and  name the file as **output.tf**  and press Enter to save it.
