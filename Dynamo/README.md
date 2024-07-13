@@ -59,3 +59,9 @@ resource "aws_dynamodb_table" "dynamodb_table" {
   }
 }
 ```
+- In the above code , we are telling terraform to create a table with table name as example-table. The billing mode should be **provisioned** by default
+- One read capacity unit describes the one strongly consistent read per second upto 1 KB in size.
+- One write capacity unit describes the one strongly consistent write per second upto 1 KB in size.
+- Hash_key represents the partition key of an item. It is composed of one attribute that acts as a primary key for the table.
+- We have defined RollNo. as the primary attribute which will be an integer. Therefore we have declared the type as “N”.
+  
