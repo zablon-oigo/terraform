@@ -104,3 +104,37 @@ ITEM
 ### Create an output file
 - In this task, you will create an output.tf file where you will add details of the provider and resources.
 - Create a new file and  name the file as **output.tf**  and press Enter to save it.
+- Paste thecontent below into the **output.tf** file
+```
+output "table_arn1" {
+    value = aws_dynamodb_table.dynamodb_table.arn
+    description = "DynamoDB Table created successfully"
+}
+```
+### Applying terraform configurations 
+Initialize Terraform by running the  command
+```
+terraform init
+
+```
+To generate the action plans run the command
+```
+terraform plan
+
+```
+To create all the resources declared in main.tf configuration file, run the following command
+```
+terraform apply
+
+```
+Enter yes and the resources will be created
+
+**Check the resources in the AWS Console**
+### Delete AWS Resources
+To delete the resources, open Terminal again.
+Run the command to delete all the resources.
+```
+terraform destroy
+
+```
+Enter yes to confirm the deletion.
