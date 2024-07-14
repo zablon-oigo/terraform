@@ -1,6 +1,8 @@
 ## How to Create DynamoDB Table and Insert Items to the table using Terraform
+### Architecture Diagram
+![AWSDynamo](https://github.com/user-attachments/assets/7429c9c8-d790-4080-9bdf-9be4e1a4b274)
 
-![Dynamo](https://github.com/user-attachments/assets/68b50c42-c754-473c-9481-7c324b5c5966)
+
 ### Create a variables file
 - Create a file & name the file as **variables.tf** and press Enter to save it
 - Paste the below contents in variables.tf file
