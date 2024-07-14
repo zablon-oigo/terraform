@@ -101,3 +101,35 @@ resource "aws_s3_bucket_policy" "read_access_policy" {
 POLICY
 }
 ```
+### Create a HTML markup template
+- create a folder and name it **html**
+- inside html folder add **index.html** file and  **error.html** file
+- add simple content in both file
+### Display the output
+- Create an outputs.tf file required for displaying the output as website endpoint.
+- Paste the following inside **output.tf** file
+```
+output "s3_bucket_id" {
+  value = aws_s3_bucket_website_configuration.blog.website_endpoint
+}
+```
+### Apply terraform configurations
+- Initialize Terraform by running:
+```
+ terraform init
+```
+*terraform init will check for all the plugin dependencies and download them if required, this will be used for creating a deployment plan.*
+- To generate the action plans, run
+```
+terraform plan
+```
+- To create all the resources declared in main.tf configuration file, run
+```
+terraform apply  
+```
+You will be able to see the resources which will be created, approve the creation of all the resources by entering **yes**.
+### Delete AWS Resources
+To delete the resources run 
+```
+terraform destroy
+```
