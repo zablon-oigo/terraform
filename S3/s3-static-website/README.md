@@ -65,3 +65,39 @@ resource "aws_s3_bucket_public_access_block" "public_access_block" {
 }
 ```
 - In the above code, you are defining the provider as AWS and provisioning AWS resources, including an S3 bucket, by configuring the AWS provider and using a random string resource to generate a unique bucket name. It also sets up the S3 bucket for website hosting and configures public access settings.
+- Add another block of just below the s3 bucket public access code, this block of code will upload all the files present under HTML folder to the S3 bucket
+```
+resource "aws_s3_object" "upload_object" {
+  for_each      = fileset("${path.module}/../html", "*")
+  bucket        = aws_s3_bucket.bucket.bucket
+  key           = each.value
+  source        = "${path.module}/../html/${each.value}"
+  etag          = filemd5("${path.module}/../html/${each.value}")
+  content_type  = "text/html"
+}
+```
+- Finally, make the bucket public by adding the bucket policy by adding another block of code to the main.tf file.
+```
+resource "aws_s3_bucket_policy" "read_access_policy" {
+  bucket = aws_s3_bucket.bucket.id
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "${aws_s3_bucket.bucket.arn}",
+        "${aws_s3_bucket.bucket.arn}/*"
+      ]
+    }
+  ]
+}
+POLICY
+}
+```
