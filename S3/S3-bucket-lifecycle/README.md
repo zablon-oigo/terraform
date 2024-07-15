@@ -95,7 +95,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "rule" {
   }
 }
 ```
--This code creates a lifecycle configuration for an S3 bucket that automatically transitions objects to lower-cost storage classes and expires them after a certain number of days
+-  This code creates a lifecycle configuration for an S3 bucket that automatically transitions objects to lower-cost storage classes and expires them after a certain number of days
 ### Create an Output file
 - Create a new file and  name the file as **output.tf** and press Enter to save it. Paste the following content to the **output.tf** file.
 ```
