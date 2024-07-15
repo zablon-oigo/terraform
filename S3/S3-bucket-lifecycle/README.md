@@ -61,5 +61,72 @@ resource "aws_s3_object" "object" {
   etag   = filemd5("${path.module}/../files/sample.txt")
 }
 ```
+### Create a LifeCycle Rule in main.tf file  
+- To create a Lifecycle rule add another block of code just below the upload code code into the main.tf file
+```
+# Creating S3 Lifecycle Rules
+resource "aws_s3_bucket_lifecycle_configuration" "rule" {
+  bucket = aws_s3_bucket.bucket.id
 
+  rule {
+    id     = "transition-to-one-zone-ia"
+    prefix = ""
+    transition {
+      days          = 30
+      storage_class = "ONEZONE_IA"
+    }
+    expiration {
+      days = 120
+    }
+    status = "Enabled"
+  }
 
+  rule {
+    id     = "transition-to-glacier"
+    prefix = ""
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+    expiration {
+      days = 120
+    }
+    status = "Enabled"
+  }
+}
+```
+-This code creates a lifecycle configuration for an S3 bucket that automatically transitions objects to lower-cost storage classes and expires them after a certain number of days
+### Create an Output file
+- Create a new file and  name the file as **output.tf** and press Enter to save it. Paste the following content to the **output.tf** file.
+```
+output "bucket" {
+  value       = aws_s3_bucket.bucket.id         
+}
+output "object" {
+  value       = aws_s3_object.object.id          
+}
+output "rule" {
+  value       = aws_s3_bucket_lifecycle_configuration.rule.id           
+}
+```
+- In the above code, we will extract details of resources created to confirm that they are created.
+### Test and Apply terraform configurations
+- Initialize Terraform by running
+```
+terraform init
+```
+- To generate the action plans run
+```
+terraform plan 
+```
+- To create all the resources declared in main.tf configuration file, run
+```
+terraform apply
+```
+- Approve the creation of all the resources by entering **yes**.
+### To Delete AWS Resources
+- Run the below command to delete all the resources.
+```
+terraform destroy
+```
+- Approve the deletion of all the resources by entering **yes**.
