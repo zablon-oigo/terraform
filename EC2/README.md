@@ -1,0 +1,2 @@
+# Launch an EC2 Instance as a web server using Terraform
+## Create a variables file
