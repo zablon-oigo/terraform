@@ -1,4 +1,5 @@
 # Launch an EC2 Instance as a web server using Terraform
+### Architecture Diagram
 ### Create a variables file
 - Create a file & name the file **variables.tf** and press Enter to save it
 - Paste the contents below in **variables.tf** file
@@ -56,3 +57,4 @@ cidr_blocks = ["0.0.0.0/0"]
 }           
 }
 ```
+- Finally, to complete the main.tf file, let's add another set of code after security group creation where you will create an EC2 instance.
