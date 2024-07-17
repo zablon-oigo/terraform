@@ -5,7 +5,7 @@
 
 ### Create a variables file
 - Create a file & name the file as **variables.tf** and press Enter to save it
-- Paste the below contents in variables.tf file
+- Paste the following contents to variables.tf file
 
 ```
 variable "access_key" {
