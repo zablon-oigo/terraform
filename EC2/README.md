@@ -103,3 +103,8 @@ terraform plan
 ```
 terraform apply
 ```
+### Delete AWS Resources
+- To delete the resources, open Terminal again.
+```
+terraform destroy
+```
