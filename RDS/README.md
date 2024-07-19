@@ -108,3 +108,14 @@ resource "aws_db_instance" "myinstance" {
   publicly_accessible  = true
 }
 ```
+### Create an Output file
+- Create a new file and name the file **output.tf**
+- paste the following into **output.tf** file
+```
+output "security_group_id" {
+  value       = aws_security_group.rds_sg.id            
+}
+output "db_instance_endpoint" {
+  value       = aws_db_instance.myinstance.endpoint         
+}
+```
