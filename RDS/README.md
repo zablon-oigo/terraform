@@ -119,3 +119,16 @@ output "db_instance_endpoint" {
   value       = aws_db_instance.myinstance.endpoint         
 }
 ```
+### Apply terraform configurations
+- Initialize Terraform by running the below command,
+```
+terraform init
+```
+- To generate the action plans run
+```
+terraform plan
+```
+- To create all the resources declared in main.tf configuration file run
+```
+terraform apply
+```
