@@ -2,7 +2,7 @@
 ### Architecture Diagram
 ![EC2](https://github.com/user-attachments/assets/fe39c1e1-7b70-43c7-b5fd-2f204ddccdbb)
 ### Create a variables file
-- Create a file & name the file **variables.tf** and press Enter to save it
+- Create a file and name the file **variables.tf** and press Enter to save it
 - Paste the contents below in **variables.tf** file
 ```
 variable "access_key" {
