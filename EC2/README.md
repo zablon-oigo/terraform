@@ -79,7 +79,7 @@ Name = "EC2-instance"
 }
 ```
 - In the above code, we have defined the Amazon Linux 2 AMI. The AMI ID mentioned above is for the US-east-1 region.
-- We have added the user data to install the apache server.
+- We have added the user data to install the Apache server.
 - We have provided tags for the EC2 instance.
 - Save the file by pressing Ctrl + S.
 ### Create an Output file
