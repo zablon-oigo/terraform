@@ -40,7 +40,6 @@ provider "aws" {
 - To create a security group Paste the below content into the main.tf file after the provider
 ```
 # Default VPC and Subnets 
-
 data "aws_vpc" "default" {
     default = true
 }

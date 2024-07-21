@@ -4,7 +4,7 @@
 
 
 ### Create a variables file
-- Create a file & name the file as **variables.tf** and press Enter to save it
+- Create a file and name the file as **variables.tf** and press Enter to save it
 - Paste the following contents to variables.tf file
 
 ```
@@ -44,7 +44,7 @@ provider "aws" {
 
 ```
 - In the above code, you are defining the provider as AWS
-- Next, we want to tell Terraform to create a DynamoDB table named as **example-table** .
+- Next, we want to tell Terraform to create a DynamoDB table named **example-table** .
 - Paste the content below  into the main.tf file after the provider.
 ```
 resource "aws_dynamodb_table" "dynamodb_table" {

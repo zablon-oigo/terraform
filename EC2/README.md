@@ -2,7 +2,7 @@
 ### Architecture Diagram
 ![EC2](https://github.com/user-attachments/assets/fe39c1e1-7b70-43c7-b5fd-2f204ddccdbb)
 ### Create a variables file
-- Create a file & name the file **variables.tf** and press Enter to save it
+- Create a new file and name the file **variables.tf** and press Enter to save it
 - Paste the contents below in **variables.tf** file
 ```
 variable "access_key" {
@@ -79,7 +79,7 @@ Name = "EC2-instance"
 }
 ```
 - In the above code, we have defined the Amazon Linux 2 AMI. The AMI ID mentioned above is for the US-east-1 region.
-- We have added the user data to install the apache server.
+- We have added the user data to install the Apache server.
 - We have provided tags for the EC2 instance.
 - Save the file by pressing Ctrl + S.
 ### Create an Output file
