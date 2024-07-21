@@ -27,3 +27,11 @@ resource "aws_db_subnet_group" "mydb_subnet_group" {
     storage_encrypted = false
     skip_final_snapshot   = true       
 }
+resource "aws_rds_cluster_instance" "cluster_instances" {
+    identifier         = "aurorainstance"
+    cluster_identifier = aws_rds_cluster.aurorards.id
+    instance_class     = "db.t3.small"
+    engine             = aws_rds_cluster.aurorards.engine
+    engine_version =      aws_rds_cluster.aurorards.engine_version
+    publicly_accessible = true
+}
