@@ -56,3 +56,23 @@ resource "aws_key_pair" "my_key" {
   key_name   = "myKey"
   public_key = tls_private_key.key.public_key_openssh
 }
+# Launching EC2 Instance 
+resource "aws_instance" "ec2" {
+    ami                    = "ami-04823729c75214919"
+    instance_type          = "t2.micro"
+    key_name               = aws_key_pair.my_key.key_name
+    vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+    subnet_id              = data.aws_subnet.subnet1.id
+    user_data = <<-EOF
+    #!/bin/bash
+    sudo su
+    yum update -y
+    yum install httpd -y
+    systemctl start httpd
+    systemctl enable httpd
+    echo "<html> <h1> Response coming from server </h1> </html>" >> /var/www/html/index.html
+    EOF
+    tags = {
+        Name = "NLBEC2server"
+    }
+}		
