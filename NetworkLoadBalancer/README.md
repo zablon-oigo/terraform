@@ -34,3 +34,5 @@ provider "aws" {
     secret_key = "${var.secret_key}"
 }			
 ```
+- In the above code, you are defining the provider as AWS.
+- Next, we want to tell Terraform to create a data source to get the details of vpc_id and subnet_id’s.
