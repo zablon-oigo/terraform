@@ -25,3 +25,12 @@ variable "region" {
 - In the above code, you are defining the dynamic values of variables declared earlier
 - Replace the values of access_key and secret_key
 - After replacing the values of access_key and secret_key, save the file by pressing Ctrl + S.
+### Launch an EC2 Instance in main.tf file
+- Create a new file and name the file  **main.tf**
+```
+provider "aws" {
+    region     = "${var.region}"
+    access_key = "${var.access_key}"
+    secret_key = "${var.secret_key}"
+}			
+```
