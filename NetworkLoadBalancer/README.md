@@ -1,4 +1,6 @@
 ## How to create and configure an AWS Network LoadBalancer using Terraform
+### Architecture Diagram
+![network](https://github.com/user-attachments/assets/490a4eac-2059-44a5-8a17-5e38f680dc90)
 ###  Create a variable file
 - Create a file and name the file **variables.tf** and press Enter to save it
 - Paste the contents below into variables.tf file
