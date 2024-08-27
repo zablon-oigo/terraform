@@ -15,7 +15,7 @@ variable "region" {
     description = "AWS region"
 }
 ```
-- In the above content, you are declaring a variable called, **access_key**, **secret_key**, and **region** with a short description of all 3.
+- In the above code, you are declaring a variable called, **access_key**, **secret_key**, and **region** with a short description of all 3.
 - After pasting the above contents, save the file by pressing ctrl + S.
 - Create another file and name the file **terraform.tfvars** and press Enter to save it.
 - Paste the following into the **terraform.tfvars** file.
