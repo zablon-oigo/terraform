@@ -1,0 +1,11 @@
+.PHONY: tf-init
+tf-init:
+	docker-compose run terraform init
+
+.PHONY: tf-fmt
+tf-fmt:
+	docker-compose run terraform fmt
+
+.PHONY tf-validate
+	docker-compose run terraform validate
+	
