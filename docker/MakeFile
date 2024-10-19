@@ -1,20 +1,19 @@
-.PHONY: tf-init
+.PHONY: tf-init tf-fmt tf-validate tf-plan tf-apply tf-destroy
+
 tf-init:
 	docker-compose run terraform init
 
-.PHONY: tf-fmt
 tf-fmt:
 	docker-compose run terraform fmt
 
-.PHONY: tf-validate
+tf-validate:
 	docker-compose run terraform validate
 
-.PHONY: tf-plan
+tf-plan:
 	docker-compose run terraform plan
 
-.PHONY: tf-apply
+tf-apply:
 	docker-compose run terraform apply
 
-.PHONY: tf-destroy
+tf-destroy:
 	docker-compose run terraform destroy
-	
