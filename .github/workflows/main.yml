@@ -1,0 +1,36 @@
+name: Run Docker Compose to Trigger Terraform
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+        - docker/main.tf
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Make and Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make
+          sudo apt-get install -y docker-compose
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Run Makefile targets
+        run: |
+          cd docker
+          make tf-init
+          make tf-plan
+          make tf-apply --auto-approve
+
