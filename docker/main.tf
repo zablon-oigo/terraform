@@ -4,15 +4,6 @@ provider "aws" {
   access_key = var.access_key
   token      = var.token
 }
-resource "tls_private_key" "key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "aws_key_pair" "my_key" {
-  key_name   = "test"
-  public_key = tls_private_key.key.public_key_openssh
-}
 data "aws_vpc" "vpc" {
   default = true
 }
@@ -38,7 +29,6 @@ resource "aws_security_group" "ec2_sg" {
 resource "aws_instance" "ebsdemo" {
   ami           = "ami-08c47e4b2806964ce"
   instance_type = "t2.micro"
-  key_name      = aws_key_pair.my_key.key_name
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
   user_data = <<-EOF
       #!/bin/bash
@@ -55,8 +45,4 @@ resource "aws_instance" "ebsdemo" {
   tags = {
     name = "WebServer"
   }
-}
-resource "local_sensitive_file" "private_key_file" {
-  content = tls_private_key.key.private_key_pem
-  filename            = "${path.module}/test.pem"
 }
