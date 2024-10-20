@@ -47,14 +47,17 @@ resource "aws_instance" "ebsdemo" {
   key_name      = aws_key_pair.my_key.key_name
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
   user_data = <<-EOF
-     #!/bin/bash
-      apt update -y
-      apt upgrade -y
-      apt install nginx -y
-      systemctl enable nginx
-      systemctl start nginx
-      echo '<h1 style="color:red">Response coming from the server</h1>' > /var/www/html/index.html
-EOF
+      #!/bin/bash
+        apt update -y
+        apt upgrade -y
+        apt install nginx docker.io -y
+        systemctl enable nginx
+        systemctl start nginx
+        systemctl enable docker
+        systemctl start docker
+        docker pull zablondev/webserver:latest
+        docker run --name web --rm -d -p 80:80 zablondev/webserver
+  EOF
   tags = {
     name = "WebServer"
   }
