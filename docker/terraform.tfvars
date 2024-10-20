@@ -1,4 +1,4 @@
-  secret_key=""
-  region=""
-  access_key =""
-  token=""
+secret_key = ""
+region     = ""
+access_key = ""
+token      = ""
