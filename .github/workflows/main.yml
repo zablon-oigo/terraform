@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-        - docker/main.tf
+        - docker/** 
 
 jobs:
   build:
