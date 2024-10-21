@@ -30,18 +30,7 @@ resource "aws_instance" "ebsdemo" {
   ami           = "ami-08c47e4b2806964ce"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-  user_data = <<-EOF
-      #!/bin/bash
-        apt update -y
-        apt upgrade -y
-        apt install nginx docker.io -y
-        systemctl enable nginx
-        systemctl start nginx
-        systemctl enable docker
-        systemctl start docker
-        docker pull zablondev/webserver:latest
-        docker run --name web --rm -d -p 80:80 zablondev/webserver
-  EOF
+  user_data = base64encode(file("${path.module}/script.sh")) 
   tags = {
     name = "WebServer"
   }
