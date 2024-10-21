@@ -13,7 +13,7 @@ tf-plan:
 	docker-compose run terraform plan
 
 tf-apply:
-	docker-compose run terraform apply
+	docker-compose run terraform apply --auto-approve
 
 tf-destroy:
-	docker-compose run terraform destroy
+	docker-compose run terraform destroy --auto-approve
