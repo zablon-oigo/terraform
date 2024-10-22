@@ -27,10 +27,10 @@ resource "aws_security_group" "ec2_sg" {
   }
 }
 resource "aws_instance" "ebsdemo" {
-  ami           = "ami-08c47e4b2806964ce"
-  instance_type = "t2.micro"
+  ami                    = "ami-08c47e4b2806964ce"
+  instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-  user_data = base64encode(file("${path.module}/script.sh")) 
+  user_data              = base64encode(file("${path.module}/script.sh"))
   tags = {
     name = "WebServer"
   }
