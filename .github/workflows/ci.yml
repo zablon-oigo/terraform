@@ -30,7 +30,17 @@ jobs:
       - name: Run Makefile targets
         run: |
           cd docker
-          docker-compose run terraform init
-          docker-compose run terraform plan
-          docker-compose run terraform apply --auto-approve
+          docker-compose run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+                             -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+                             -e AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }} \
+                             terraform init
+          docker-compose run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+                             -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+                             -e AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }} \
+                             terraform plan
+          docker-compose run -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+                             -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+                             -e AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }} \
+                             terraform apply --auto-approve
+
 
