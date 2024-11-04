@@ -30,7 +30,7 @@ jobs:
       - name: Run Makefile targets
         run: |
           cd docker
-          make tf-init
-          make tf-plan
-          make tf-apply --auto-approve
+          docker-compose run terraform init
+          docker-compose run terraform plan
+          docker-compose run terraform apply --auto-approve
 
