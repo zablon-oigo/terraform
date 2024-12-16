@@ -23,4 +23,11 @@ resource "aws_subnet" "subnet2" {
    tags = {
     Name = "MyPrivateSubnet"
   }
+}		
+resource "aws_internet_gateway" "igw" {
+  vpc_id = "${aws_vpc.vpc.id}"
+  tags = {
+    Name = "MyInternetGateway"
+  }
 }			
+
