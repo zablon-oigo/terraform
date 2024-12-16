@@ -63,3 +63,4 @@ resource "aws_security_group" "ec2sg" {
     Name = "test_sg"
   }
 }			
+resource "aws_instance" "instance" {}
