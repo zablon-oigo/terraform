@@ -41,4 +41,16 @@ resource "aws_route_table" "routetable" {
 resource "aws_route_table_association" "subnetassociation" {
   subnet_id = aws_subnet.subnet1.id
   route_table_id = aws_route_table.routetable.id
-}		
+}	
+
+resource "aws_security_group" "ec2sg" {
+  name        = "MyEC2Server_SG"
+  description = "Security Group to allow traffic to EC2"
+  vpc_id      = aws_vpc.vpc.id
+  ingress {
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+}			
