@@ -75,3 +75,5 @@ resource "aws_instance" "instance" {
     }
     depends_on = [aws_security_group.ec2sg]
 }
+resource "aws_instance" "instance2" {
+}
