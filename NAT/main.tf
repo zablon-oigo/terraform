@@ -81,4 +81,9 @@ resource "aws_instance" "instance2" {
     vpc_security_group_ids = ["${aws_security_group.ec2sg.id}"]
     subnet_id     = aws_subnet.subnet2.id
     associate_public_ip_address = false
+        key_name = "test"
+    tags = {
+        Name = "MyPrivateEC2Server"
+    }
+    depends_on = [aws_security_group.ec2sg]
 }
