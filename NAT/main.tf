@@ -87,3 +87,9 @@ resource "aws_instance" "instance2" {
     }
     depends_on = [aws_security_group.ec2sg]
 }
+resource "aws_nat_gateway" "NATGateway" {
+  allocation_id = aws_eip.elasticIP.id
+  tags = {
+    Name = "MyNATGateway"
+  }
+}
