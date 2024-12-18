@@ -97,3 +97,7 @@ resource "aws_nat_gateway" "NATGateway" {
 resource "aws_eip" "elasticIP" {
   domain   = "vpc"
 }	
+resource "aws_route" "update" {
+  route_table_id            = aws_vpc.vpc.main_route_table_id
+  destination_cidr_block    = "0.0.0.0/0"
+}			
