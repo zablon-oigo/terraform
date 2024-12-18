@@ -94,3 +94,6 @@ resource "aws_nat_gateway" "NATGateway" {
     Name = "MyNATGateway"
   }
 }
+resource "aws_eip" "elasticIP" {
+  domain   = "vpc"
+}	
