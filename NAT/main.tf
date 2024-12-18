@@ -100,4 +100,5 @@ resource "aws_eip" "elasticIP" {
 resource "aws_route" "update" {
   route_table_id            = aws_vpc.vpc.main_route_table_id
   destination_cidr_block    = "0.0.0.0/0"
+  nat_gateway_id = "${aws_nat_gateway.NATGateway.id}"
 }			
