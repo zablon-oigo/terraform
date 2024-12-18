@@ -89,6 +89,7 @@ resource "aws_instance" "instance2" {
 }
 resource "aws_nat_gateway" "NATGateway" {
   allocation_id = aws_eip.elasticIP.id
+  subnet_id     = aws_subnet.subnet1.id
   tags = {
     Name = "MyNATGateway"
   }
