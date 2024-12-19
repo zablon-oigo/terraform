@@ -1,4 +1,4 @@
 
-region = "us-west-2"
+region     = "us-west-2"
 access_key = ""
-secret_key = ""			
+secret_key = ""
