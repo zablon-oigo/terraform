@@ -3,3 +3,8 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
 }
+resource "aws_cognito_user_pool" "user_pool" {
+  name="my-user-pool"
+  username_attributes=["email"]
+  
+}
