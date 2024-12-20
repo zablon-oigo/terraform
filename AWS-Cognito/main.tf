@@ -18,4 +18,7 @@ resource "aws_cognito_user_pool" "user_pool" {
     require_symbols = true
     require_uppercase = true
   }
+  verification_message_template {
+    default_email_option = "CONFIRM_WITH_CODE"
+  }
 }
