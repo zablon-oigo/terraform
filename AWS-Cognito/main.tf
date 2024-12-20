@@ -6,5 +6,9 @@ provider "aws" {
 resource "aws_cognito_user_pool" "user_pool" {
   name="my-user-pool"
   username_attributes=["email"]
-  
+  schema{
+    attribute_data_type = "String"
+    name = "email"
+    required = true
+  }
 }
