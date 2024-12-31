@@ -12,3 +12,9 @@ resource "aws_lambda_function" "test_lambda" {
     runtime          = "python3.9"
     source_code_hash = filebase64sha256("lambda_function.zip")
 }
+resource "aws_api_gateway_rest_api" "testAPI" {
+    name        = "myAPI"
+   endpoint_configuration {
+      types     = ["REGIONAL"]       
+   }
+}
