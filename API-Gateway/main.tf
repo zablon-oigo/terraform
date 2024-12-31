@@ -18,3 +18,8 @@ resource "aws_api_gateway_rest_api" "testAPI" {
       types     = ["REGIONAL"]       
    }
 }
+resource "aws_api_gateway_resource" "testresource" {
+    parent_id   = aws_api_gateway_rest_api.testAPI.root_resource_id
+    path_part   = "testapi"
+    rest_api_id = aws_api_gateway_rest_api.testAPI.id           
+}
