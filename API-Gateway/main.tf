@@ -56,3 +56,17 @@ resource "aws_api_gateway_integration_response" "MyDemoIntegrationResponse" {
     response_templates = { "application/json" = "" }
     depends_on         = [aws_api_gateway_integration.MyDemoIntegration]
 }
+resource "aws_api_gateway_deployment" "testdep" {
+    rest_api_id = aws_api_gateway_rest_api.testAPI.id
+    triggers = {
+      redeployment = sha1(jsonencode([
+        aws_api_gateway_resource.testresource.id,
+        aws_api_gateway_method.testMethod.id,
+        aws_api_gateway_integration.MyDemoIntegration.id,     
+      ]))         
+    }
+    depends_on = [aws_api_gateway_integration.MyDemoIntegration]
+    lifecycle {
+      create_before_destroy = true         
+    }           
+}
