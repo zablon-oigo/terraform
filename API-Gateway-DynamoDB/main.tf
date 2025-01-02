@@ -41,3 +41,15 @@ resource "aws_dynamodb_table" "table" {
   }
   
 }
+resource "aws_dynamodb_table_item" "item1" {
+  table_name = aws_dynamodb_table.table.name
+  hash_key   = aws_dynamodb_table.table.hash_key
+  item = <<ITEM
+{
+  "Id": {"S": "1"},
+  "Firstname": {"S": "John"},
+  "LastName": {"S": "Doe"},
+  "Age": {"S": "20"}
+}
+ITEM
+}
