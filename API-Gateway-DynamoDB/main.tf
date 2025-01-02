@@ -29,3 +29,15 @@ resource "aws_vpc_endpoint" "vpcendpoint" {
   security_group_ids = [aws_security_group.whiz_sg.id,]
   ip_address_type    = "ipv4"
 }
+resource "aws_dynamodb_table" "table" {
+  name           = "test-table"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "Id"
+  attribute {
+    name = "Id"
+    type = "S" 
+  }
+  
+}
