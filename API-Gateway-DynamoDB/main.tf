@@ -21,3 +21,11 @@ resource "aws_security_group" "sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+resource "aws_vpc_endpoint" "vpcendpoint" {
+  vpc_id             = data.aws_vpc.vpc.id
+  subnet_ids         = [data.aws_subnet.subnet1.id]
+  service_name       = "com.amazonaws.us-east-1.execute-api"
+  vpc_endpoint_type = "Interface"
+  security_group_ids = [aws_security_group.whiz_sg.id,]
+  ip_address_type    = "ipv4"
+}
