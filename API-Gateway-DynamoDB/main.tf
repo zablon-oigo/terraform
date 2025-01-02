@@ -65,3 +65,11 @@ resource "aws_dynamodb_table_item" "item1" {
 }
 ITEM
 }
+resource "aws_lambda_function" "lambda" {
+  filename      = "lambda_function.zip"
+  function_name = "lambda_function"
+  role          = ""
+  handler       = "lambda_function.lambda_handler"
+  runtime = "python3.9"
+  source_code_hash = filebase64sha256("lambda_function.zip")    
+}
