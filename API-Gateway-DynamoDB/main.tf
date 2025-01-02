@@ -11,3 +11,13 @@ data "aws_subnet" "subnet" {
     availability_zone = "us-east-1a"
   
 }
+resource "aws_security_group" "sg" {
+  name="test-sg"
+  vpc_id = data.aws_vpc.default.id
+  ingress {
+    to_port=443
+    from_port = 443
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
